@@ -1,4 +1,4 @@
-namespace PianoTilesEGC.LevelData
+namespace PianoTilesEGC.DataLevel
 {
     public class TileData
     {

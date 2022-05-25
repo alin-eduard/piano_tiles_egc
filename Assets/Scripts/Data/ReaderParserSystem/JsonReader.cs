@@ -6,13 +6,13 @@ using PianoTilesEGC.Utils;
 
 namespace PianoTilesEGC.ReaderParserSystem
 {
-    public class JsonReader : Singleton<JsonReader>
+    public static class JsonReader
     {
-        static string path = Application.streamingAssetsPath + "Resources/LevelsData";
+        static string path = Application.streamingAssetsPath + "/Resources/LevelsData/";
         
-        public string ReadJson(string fileName)
+        public static string ReadJson(string fileName)
         { 
-            using (var sr = new StreamReader(path + fileName))
+            using (var sr = new StreamReader(path + fileName + ".json"))
             {
                 string json = sr.ReadToEnd();;
                 return json;
