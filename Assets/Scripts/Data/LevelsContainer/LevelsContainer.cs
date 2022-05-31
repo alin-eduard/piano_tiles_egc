@@ -9,6 +9,6 @@ namespace PianoTilesEGC.Level
     {
         public List<string> LevelFileName = new List<string>();
         public List<AudioClip> LevelsSong = new List<AudioClip>();
-        public LevelSetings LevelsSettings;
+        public List<LevelSettings> LevelsSettings = new List<LevelSettings>();
     }
 }

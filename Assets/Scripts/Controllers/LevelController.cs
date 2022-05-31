@@ -1,37 +1,55 @@
-using PianoTilesEGC.Utils;
+using System;
+using UnityEngine;
+using PianoTilesEGC.Level;
 using PianoTilesEGC.Managers;
 using PianoTilesEGC.DataLevel;
 using PianoTilesEGC.ReaderParserSystem;
-using UnityEngine;
-using System;
-using PianoTilesEGC.Level;
 
 namespace PianoTilesEGC.Controllers
 {
-    public class LevelController : Singleton<LevelController>
+    public class LevelController : IController
     {
-        public void PlayLevel(int indexLevel)
-        {
-            var levelData = GetLevelData(indexLevel);
-            //var levelAudioClio = GetAudioClipLevel(indexLevel);
-            var levelSettings = GameManeger.Instance.LevelsContainer.LevelsSettings;
+        private int destroyedTiles;
+        private int tilesThatShouldDestroyed;
 
-            LevelGenerator.Instance.GenerateLevel(levelData, levelSettings);
+        public override void OnStartLevel() { }
+
+        public override void OnFinishLevel() { }
+
+        public override void OnGameOver() { }
+
+        public override void OnPrepareLevel(int levelIndex)
+        {
+            var levelData = GetLevelData(levelIndex);
+            //var levelAudioClio = GetAudioClipLevel(levelIndex);
+            var levelSettings = GetLevelSettings(levelIndex);
+
+            LevelGenerator.Instance.GenerateLevel(levelData, levelSettings, out tilesThatShouldDestroyed);
+            destroyedTiles = 0;
         }
 
+        public override void OnDestroyTile()
+        {
+            destroyedTiles++;
+            if (destroyedTiles == tilesThatShouldDestroyed)
+            {
+                GameManager.Instance.FireOnFinishLevel();
+            }
+        }
+
+        #region Private Methods
         private LevelData GetLevelData(int indexLevel)
         {
             try
             {
-                var levelFileName = GameManeger.Instance.LevelsContainer.LevelFileName[indexLevel];
+                var levelFileName = GameManager.Instance.LevelsContainer.LevelFileName[indexLevel];
                 var jsonLevel = JsonReader.ReadJson(levelFileName);
                 var levelData = JsonParser.ParseJson(jsonLevel);
                 return levelData;
             }
             catch (Exception exception)
             {
-                Debug.LogError(exception.ToString());
-                return null;
+                throw exception;
             }
         }
 
@@ -39,13 +57,25 @@ namespace PianoTilesEGC.Controllers
         {
             try
             {
-                return GameManeger.Instance.LevelsContainer.LevelsSong[indexLevel];
+                return GameManager.Instance.LevelsContainer.LevelsSong[indexLevel];
             }
             catch (Exception exception)
             {
-                Debug.LogError(exception.ToString());
-                return null;
+                throw exception;
             }
         }
+
+        private LevelSettings GetLevelSettings(int indexLevel)
+        {
+            try
+            {
+                return GameManager.Instance.LevelsContainer.LevelsSettings[indexLevel];
+            }
+            catch (Exception exception)
+            {
+                throw exception;
+            }
+        }
+        #endregion
     }
 }

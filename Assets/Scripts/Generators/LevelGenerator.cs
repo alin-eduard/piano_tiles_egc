@@ -1,8 +1,7 @@
-using System;
 using UnityEngine;
 using PianoTilesEGC.Utils;
-using PianoTilesEGC.DataLevel;
 using PianoTilesEGC.Level;
+using PianoTilesEGC.DataLevel;
 
 namespace PianoTilesEGC.Controllers
 {
@@ -12,8 +11,10 @@ namespace PianoTilesEGC.Controllers
         public GameObject prefabTile;
         public GameObject parentTiles;
 
-        public void GenerateLevel(LevelData levelData, LevelSetings levelSettings)
+        public void GenerateLevel(LevelData levelData, LevelSettings levelSettings, out int numberGeneraterdTiles)
         {
+            numberGeneraterdTiles = 0;
+
             for (int i = 0; i < 4; i++)
             {
                 var tileDataList = levelData.TilesData[i];
@@ -40,10 +41,11 @@ namespace PianoTilesEGC.Controllers
 
                     var x = levelSettings.Positions[(int)tileData.Position.X] + offset;
                     var z = tileData.Position.Y;
-                    var y = 0f;
+                    var y = 0.0f;
 
                     var positionNewTile = new Vector3(x, y, z);
-                    GameObject.Instantiate(prefabTile, positionNewTile, new Quaternion(), parentTiles.transform);
+                    Instantiate(prefabTile, positionNewTile, new Quaternion(), parentTiles.transform);
+                    numberGeneraterdTiles ++;
                 }
             }
         }
