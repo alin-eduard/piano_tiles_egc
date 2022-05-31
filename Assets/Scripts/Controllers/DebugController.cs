@@ -26,7 +26,7 @@ namespace PianoTilesEGC.Controllers
 
         public override void OnPrepareLevel(int levelIndex)
         {
-            Debug.Log("<color=#FFFF00> Prepare Level </color>");
+            Debug.Log("<color=#FFFF00> Prepare Level -> Index: " + levelIndex + "</color>");
         }
     }
 }

@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class GismosSphere : MonoBehaviour
+public class GizmosSphere : MonoBehaviour
 {
     [SerializeField] [Range(0.05f, 0.2f)] private float radius = 0.2f;
 

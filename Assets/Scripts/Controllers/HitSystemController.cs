@@ -4,7 +4,7 @@ using PianoTilesEGC.Managers;
 
 namespace PianoTilesEGC.Controllers
 {
-    public class HitController : IController
+    public class HitSystemController : IController
     {
         public override void OnStartLevel()
         {
