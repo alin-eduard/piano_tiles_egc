@@ -14,12 +14,14 @@ namespace PianoTilesEGC.Controllers
             GameManager.Instance.OnGameOver += OnGameOver;
             GameManager.Instance.OnDestroyTile += OnDestroyTile;
             GameManager.Instance.OnPrepareLevel += OnPrepareLevel;
+            GameManager.Instance.OnDestroyFirstTile += OnDestroyFirstTile;
         }
 
         public abstract void OnStartLevel();
         public abstract void OnFinishLevel();
         public abstract void OnGameOver();
         public abstract void OnDestroyTile();
+        public abstract void OnDestroyFirstTile();
         public abstract void OnPrepareLevel(int levelIndex);
     }
 

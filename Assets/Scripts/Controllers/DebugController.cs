@@ -28,5 +28,9 @@ namespace PianoTilesEGC.Controllers
         {
             Debug.Log("<color=#FFFF00> Prepare Level -> Index: " + levelIndex + "</color>");
         }
+        public override void OnDestroyFirstTile()
+        { 
+
+        }
     }
 }

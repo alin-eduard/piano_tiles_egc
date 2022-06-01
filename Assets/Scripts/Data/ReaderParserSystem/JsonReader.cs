@@ -8,15 +8,19 @@ namespace PianoTilesEGC.ReaderParserSystem
 {
     public static class JsonReader
     {
-        static string path = Application.streamingAssetsPath + "/Resources/LevelsData/";
-        
         public static string ReadJson(string fileName)
-        { 
-            using (var sr = new StreamReader(path + fileName + ".json"))
-            {
-                string json = sr.ReadToEnd();;
-                return json;
-            }
+        {
+            var path = Path.Combine("LevelsData", fileName);
+            TextAsset file = Resources.Load(path) as TextAsset;
+            string json = file.ToString();
+            return json;
         }
+
+        //public static AudioClip ReadAudioClip(string fileName)
+        //{
+        //    var path = Path.Combine("SongData", fileName);
+        //    var audioClip = Resources.Load(path) as AudioClip;
+        //    return audioClip;
+        //}
     }
 }

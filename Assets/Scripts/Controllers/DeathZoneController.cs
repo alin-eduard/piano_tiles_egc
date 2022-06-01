@@ -15,6 +15,7 @@ namespace PianoTilesEGC.Controllers
         public override void OnPrepareLevel(int levelIndex) { }
 
         public override void OnStartLevel() { }
+        public override void OnDestroyFirstTile() { }
 
         private void OnTriggerEnter(Collider other)
         {
