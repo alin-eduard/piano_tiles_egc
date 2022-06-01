@@ -49,5 +49,16 @@ namespace PianoTilesEGC.Controllers
                 }
             }
         }
+
+        public void DestroyAllTiles()
+        {
+            var tilesParent = parentTiles.GetComponentInChildren<Transform>().gameObject;
+            var tiles =  tilesParent.GetComponentsInChildren<Transform>();
+
+            for (int i = 1; i < tiles.Length; i++)
+            {
+                Destroy(tiles[i].gameObject);
+            }
+        }
     }
 }
