@@ -14,6 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DistanceBetweenTiles: 0.1
   TileLength: 1
+  CameraSpeed: 5
+  StartCameraPosition: {x: 0, y: 5, z: -1.5}
   Positions:
   - -0.75
   - -0.25

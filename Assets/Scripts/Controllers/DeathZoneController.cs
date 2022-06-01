@@ -6,6 +6,7 @@ namespace PianoTilesEGC.Controllers
 {
     public class DeathZoneController : IController
     {
+        [SerializeField] private bool AutoDestroy = false;
         public override void OnDestroyTile() { }
 
         public override void OnFinishLevel() { }
@@ -21,7 +22,15 @@ namespace PianoTilesEGC.Controllers
         {
             if (other.gameObject.tag.Equals(Constants.Tags.Tile))
             {
-                GameManager.Instance.FireOnGameOver();
+                if (!AutoDestroy)
+                {
+                    GameManager.Instance.FireOnGameOver();
+                }
+                else
+                {
+                    Destroy(other.gameObject);
+                    GameManager.Instance.FireOnDestroyTile();
+                }
             }
         }
     }

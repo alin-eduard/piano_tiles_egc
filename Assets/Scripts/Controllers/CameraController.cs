@@ -5,7 +5,7 @@ namespace PianoTilesEGC.Controllers
 {
     public class CameraController : IController
     {
-        private float cameraSpeed;
+        [SerializeField] [Range(0.5f, 10f)]private float cameraSpeed;
         private bool finalLevel;
 
         public override void OnStartLevel() { }
