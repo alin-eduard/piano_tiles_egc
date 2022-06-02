@@ -14,10 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LevelFileName:
   - {fileID: 4900000, guid: 0013532e34adde14ab1142692907a4f3, type: 3}
+  - {fileID: 4900000, guid: 982289119143960419bf9711d47419a6, type: 3}
   - {fileID: 4900000, guid: c85717c6dec1f7443ad5f0b75410e1cd, type: 3}
   LevelsSong:
   - {fileID: 8300000, guid: b1fe99243a7e8b7469fa2cefa8196efe, type: 3}
+  - {fileID: 8300000, guid: 40b4916a2c536fc4bbbca5281eff19c2, type: 3}
   - {fileID: 8300000, guid: e29a829c5494a724d80dcd86bee97db9, type: 3}
   LevelsSettings:
+  - {fileID: 11400000, guid: a149e68ab021f9c42877d72f62e8f274, type: 2}
   - {fileID: 11400000, guid: a149e68ab021f9c42877d72f62e8f274, type: 2}
   - {fileID: 11400000, guid: 19a729cfb4f8d81439c244be1c626d55, type: 2}
