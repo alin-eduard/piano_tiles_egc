@@ -11,7 +11,8 @@ public enum CanvasType
     MainMenu,
     GameUI,
     HowToPlay,
-    LevelSelector
+    LevelSelector,
+    GameOver
 }
 public class UIManager : Singleton<UIManager>
 {
