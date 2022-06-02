@@ -10,7 +10,8 @@ public enum CanvasType
 {
     MainMenu,
     GameUI,
-    HowToPlay
+    HowToPlay,
+    LevelSelector
 }
 public class UIManager : Singleton<UIManager>
 {
@@ -19,6 +20,7 @@ public class UIManager : Singleton<UIManager>
 
      protected override void Awake()
      {
+         base.Awake();
          UIControllersList = GetComponentsInChildren<UIController>().ToList();
 
          UIControllersList.ForEach(x => x.gameObject.SetActive(false));
@@ -37,8 +39,9 @@ public class UIManager : Singleton<UIManager>
          UIController desiredCanvas = UIControllersList.Find(x => x.canvasType == _type);
          if (desiredCanvas != null)
          {
-             desiredCanvas.gameObject.SetActive(true);
-         }
+            desiredCanvas.gameObject.SetActive(true);
+            lastActiveCanvas = desiredCanvas;
+        }
          else { Debug.LogWarning("The desired canvas was not found!"); }
      }
     
