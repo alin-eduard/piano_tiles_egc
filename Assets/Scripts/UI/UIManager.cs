@@ -17,9 +17,9 @@ public class UIManager : Singleton<UIManager>
     List<UIController> UIControllersList;
     UIController lastActiveCanvas;
 
-    /* protected override void Awake()
+     protected override void Awake()
      {
-         UIControllersList = GetComponentInChildren<UIController>().ToList();
+         UIControllersList = GetComponentsInChildren<UIController>().ToList();
 
          UIControllersList.ForEach(x => x.gameObject.SetActive(false));
 
@@ -41,5 +41,5 @@ public class UIManager : Singleton<UIManager>
          }
          else { Debug.LogWarning("The desired canvas was not found!"); }
      }
-    */
+    
 }
