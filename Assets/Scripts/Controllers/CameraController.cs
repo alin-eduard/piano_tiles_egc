@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace PianoTilesEGC.Controllers
 {
-    public class CameraController : IController
+    public class CameraController : IController<CameraController>
     {
         [SerializeField] [Range(0.5f, 10f)]private float cameraSpeed;
         private bool finalLevel;
@@ -19,19 +19,21 @@ namespace PianoTilesEGC.Controllers
         {
             finalLevel = true;
         }
+        
         public override void OnDestroyFirstTile()
         {
-            Enabled = true; ;
+            Enabled = true;
         }
 
         public override void OnDestroyTile() { }
 
-        public override void OnPrepareLevel(int levelIndex)
+        public override void OnPrepareLevel(int levelIndex, bool autoMode = false)
         {
             var levelSettings = GameManager.Instance.GetLevelSettings(levelIndex);
             Camera.main.transform.position = levelSettings.StartCameraPosition;
             cameraSpeed = levelSettings.CameraSpeed;
             finalLevel = false;
+            Enabled = false;
         }
 
         private void Update()

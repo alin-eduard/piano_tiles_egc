@@ -1,14 +1,15 @@
 using UnityEngine;
 using PianoTilesEGC.Utils;
 using PianoTilesEGC.Managers;
+using System.Collections;
 
 namespace PianoTilesEGC.Controllers
 {
-    public class HitSystemController : IController
+    public class HitSystemController : IController<HitSystemController>
     {
         public override void OnStartLevel()
         {
-            Enabled = true;
+            StartCoroutine(DelayEnable(0.5f));
         }
 
         public override void OnFinishLevel()
@@ -25,7 +26,7 @@ namespace PianoTilesEGC.Controllers
         
         public override void OnDestroyTile() { }
 
-        public override void OnPrepareLevel(int levelIndex) { }
+        public override void OnPrepareLevel(int levelIndex, bool autoMode = false) { }
 
         void Update()
         {
@@ -43,6 +44,12 @@ namespace PianoTilesEGC.Controllers
                     }
                 }
             }
+        }
+
+        private IEnumerator DelayEnable(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            Enabled = true;
         }
     }
 }

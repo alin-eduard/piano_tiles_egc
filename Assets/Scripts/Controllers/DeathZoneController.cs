@@ -4,7 +4,7 @@ using PianoTilesEGC.Managers;
 
 namespace PianoTilesEGC.Controllers
 {
-    public class DeathZoneController : IController
+    public class DeathZoneController : IController<DeathZoneController>
     {
         [SerializeField] private bool AutoDestroy = false;
         public override void OnDestroyTile() { }
@@ -13,7 +13,7 @@ namespace PianoTilesEGC.Controllers
 
         public override void OnGameOver() { }
 
-        public override void OnPrepareLevel(int levelIndex) { }
+        public override void OnPrepareLevel(int levelIndex, bool autoMode = false) { }
 
         public override void OnStartLevel() { }
         public override void OnDestroyFirstTile() { }
