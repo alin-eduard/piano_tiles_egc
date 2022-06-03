@@ -3,7 +3,7 @@ using PianoTilesEGC.Managers;
 
 namespace PianoTilesEGC.Controllers
 {
-    public abstract class IController : Singleton<IController>
+    public abstract class IController<T> : Singleton<T> where T : Singleton<T> 
     {
         public bool Enabled = false;
 
@@ -22,7 +22,7 @@ namespace PianoTilesEGC.Controllers
         public abstract void OnGameOver();
         public abstract void OnDestroyTile();
         public abstract void OnDestroyFirstTile();
-        public abstract void OnPrepareLevel(int levelIndex);
+        public abstract void OnPrepareLevel(int levelIndex, bool autoMode = false);
     }
 
 }

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace PianoTilesEGC.Controllers
 {
-    public class DebugController : IController
+    public class DebugController : IController<DebugController>
     {
         public override void OnStartLevel()
         {
@@ -24,9 +24,9 @@ namespace PianoTilesEGC.Controllers
             Debug.Log("<color=#00FFFF> Destroy Tile </color>");
         }
 
-        public override void OnPrepareLevel(int levelIndex)
+        public override void OnPrepareLevel(int levelIndex, bool autoMode = false)
         {
-            Debug.Log("<color=#FFFF00> Prepare Level -> Index: " + levelIndex + "</color>");
+            Debug.Log("<color=#FFFF00> Prepare Level -> Index: " + levelIndex + " | Auto Mode: " + (autoMode ? "Enabled" : "Disabled")  + "</color>");
         }
         public override void OnDestroyFirstTile()
         { 

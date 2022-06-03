@@ -17,7 +17,7 @@ namespace PianoTilesEGC.Managers
         public Action OnGameOver;
         public Action OnFinishLevel;
         public Action OnDestroyTile;
-        public Action<int> OnPrepareLevel;
+        public Action<int, bool> OnPrepareLevel;
         public Action OnDestroyFirstTile;
 
         public void FireOnStartLevel()
@@ -40,9 +40,9 @@ namespace PianoTilesEGC.Managers
             OnDestroyTile?.Invoke();
         }  
         
-        public void FireOnPrepareLevel(int levelIndex)
+        public void FireOnPrepareLevel(int levelIndex, bool autoMode = false)
         {
-            OnPrepareLevel?.Invoke(levelIndex);
+            OnPrepareLevel?.Invoke(levelIndex, autoMode);
         }
         public void FireOnDestroyFirstTile()
         {
