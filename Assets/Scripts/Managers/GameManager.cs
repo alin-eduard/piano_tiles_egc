@@ -13,27 +13,12 @@ namespace PianoTilesEGC.Managers
         [SerializeField] private LevelsContainer levelsContainer;
         public LevelsContainer LevelsContainer => levelsContainer;
 
-        [SerializeField] public int levelIndex = 0; 
-        public Button TestButton;
-
         public Action OnStartLevel;
         public Action OnGameOver;
         public Action OnFinishLevel;
         public Action OnDestroyTile;
         public Action<int> OnPrepareLevel;
         public Action OnDestroyFirstTile;
-
-        // testing
-        private void Start()
-        {
-            FireOnPrepareLevel(levelIndex);
-            TestButton.onClick.AddListener(delegate 
-            {
-                FireOnStartLevel();
-                TestButton.gameObject.SetActive(false);
-            });
-        }
-        //-------
 
         public void FireOnStartLevel()
         {
