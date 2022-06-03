@@ -5,7 +5,6 @@ using UnityEngine;
 using System.Linq;
 using System;
 
-
 public enum CanvasType
 {
     MainMenu,
@@ -27,7 +26,6 @@ public class UIManager : Singleton<UIManager>
          UIControllersList.ForEach(x => x.gameObject.SetActive(false));
 
          SwitchCanvas(CanvasType.MainMenu);
-
      }
 
      public void SwitchCanvas(CanvasType _type)

@@ -12,15 +12,12 @@ public class CanvasSwitcher : MonoBehaviour
     UIManager canvasManager;
     Button menuButton;
 
-    // Start is called before the first frame update
     public void Start()
     {
         menuButton = GetComponent<Button>();
         menuButton.onClick.AddListener(OnButtonClicked);
-        canvasManager = UIManager.GetInstance();
-
+        canvasManager = UIManager.Instance;
     }
-
 
     void OnButtonClicked()
     {
