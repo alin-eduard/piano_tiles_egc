@@ -1,25 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class QuitButton : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    public void Update()
-    {
-        
-    }
-
     public void Exit()
     {
-        //when building the game comment the next line
+#if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
         Application.Quit();
+#endif
+        
+#if UNITY_ANDROID
+        AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+        activity.Call<bool>("moveTaskToBack", true);
+#endif
     }
 }

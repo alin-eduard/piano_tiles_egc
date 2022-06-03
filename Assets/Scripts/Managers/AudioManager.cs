@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using PianoTilesEGC.Utils;
 
@@ -11,12 +13,6 @@ namespace PianoTilesEGC.Managers
 		public float LowPitchRange = 0.95f;
 		public float HighPitchRange = 1.05f;
 
-		//public void Play(AudioClip clip)
-		//{
-		//	EffectsSource.clip = clip;
-		//	EffectsSource.Play();
-		//}
-
 		public void SetAudioClip(AudioClip clip)
         {
 			MusicSource.clip = clip;
@@ -29,7 +25,22 @@ namespace PianoTilesEGC.Managers
 
         public void StopMusic()
         {
-			MusicSource.Stop();
+	        StartCoroutine(StopFadeOut(1f));
+        }
+        
+        private IEnumerator StopFadeOut(float fadeTime)
+        {
+	        float startVolume = MusicSource.volume;
+ 
+	        while (MusicSource.volume > 0)
+	        {
+		        MusicSource.volume -= startVolume * Time.deltaTime / fadeTime;
+ 
+		        yield return null;
+	        }
+ 
+	        MusicSource.Stop();
+	        MusicSource.volume = startVolume;
         }
     }
 }
