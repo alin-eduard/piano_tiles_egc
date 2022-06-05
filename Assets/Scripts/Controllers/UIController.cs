@@ -15,7 +15,7 @@ namespace PianoTilesEGC.Controllers
 
         public override void OnFinishLevel() 
         {
-            UIManager.Instance.SwitchCanvas(CanvasType.GameOver);
+            UIManager.Instance.SwitchCanvas(CanvasType.FinishedGame);
         }
 
         public override void OnDestroyTile() { }

@@ -7,6 +7,8 @@ namespace PianoTilesEGC.Utils
         GameUI,
         HowToPlay,
         LevelSelector,
-        GameOver
+        GameOver,
+        PauseLevel,
+        FinishedGame
     }
 }
