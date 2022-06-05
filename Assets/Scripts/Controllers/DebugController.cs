@@ -26,11 +26,22 @@ namespace PianoTilesEGC.Controllers
 
         public override void OnPrepareLevel(int levelIndex, bool autoMode = false)
         {
-            Debug.Log("<color=#FFFF00> Prepare Level -> Index: " + levelIndex + " | Auto Mode: " + (autoMode ? "Enabled" : "Disabled")  + "</color>");
+            Debug.Log("<color=#FFFF00> Prepare Level -> Index: " + levelIndex + " | Auto Mode: " +
+                      (autoMode ? "Enabled" : "Disabled") + "</color>");
         }
-        public override void OnDestroyFirstTile()
-        { 
 
+        public override void OnDestroyFirstTile()
+        {
+        }
+
+        public override void OnPauseLevel()
+        {
+            Debug.Log("<color=#000000> Pause Level </color>");
+        }
+
+        public override void OnReloadLevel()
+        {
+            Debug.Log("<color=#000000> Reload Level </color>");
         }
     }
 }

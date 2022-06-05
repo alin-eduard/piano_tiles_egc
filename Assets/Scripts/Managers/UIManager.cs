@@ -3,8 +3,6 @@ using System.Linq;
 using PianoTilesEGC.Utils;
 using System.Collections.Generic;
 using PianoTilesEGC.UI;
-using PianoTilesEGC.Controllers;
-using System;
 
 namespace PianoTilesEGC.Managers
 {
@@ -35,23 +33,11 @@ namespace PianoTilesEGC.Managers
             {
                 desiredCanvas.gameObject.SetActive(true);
                 lastActiveCanvas = desiredCanvas;
-
-                var index = LevelController.Instance.SelectedLevelIndex;
-                var playMode = LevelController.Instance.AutoMode;
-
-                switch (_type)
-                {
-                    case CanvasType.GameUI:
-                        GameManager.Instance.FireOnPrepareLevel(index, playMode);
-                        GameManager.Instance.FireOnStartLevel();
-                        break;
-                }
             }
             else
             {
                 Debug.LogWarning("The desired canvas was not found!");
             }
         }
-
     }
 }

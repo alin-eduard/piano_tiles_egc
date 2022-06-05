@@ -1,6 +1,6 @@
 ﻿using System;
+using PianoTilesEGC.Controllers;
 using UnityEngine;
-using UnityEngine.UI;
 using PianoTilesEGC.Level;
 using PianoTilesEGC.Utils;
 using PianoTilesEGC.DataLevel;
@@ -19,6 +19,8 @@ namespace PianoTilesEGC.Managers
         public Action OnDestroyTile;
         public Action<int, bool> OnPrepareLevel;
         public Action OnDestroyFirstTile;
+        public Action OnPauseLevel;
+        public Action OnReloadLevel;
 
         public void FireOnStartLevel()
         {
@@ -38,17 +40,35 @@ namespace PianoTilesEGC.Managers
         public void FireOnDestroyTile()
         {
             OnDestroyTile?.Invoke();
-        }  
-        
+        }
+
         public void FireOnPrepareLevel(int levelIndex, bool autoMode = false)
         {
             OnPrepareLevel?.Invoke(levelIndex, autoMode);
         }
+
+        public void FireStartSelectedLevel()
+        {
+            var index = LevelController.Instance.SelectedLevelIndex;
+            var playMode = LevelController.Instance.AutoMode;
+            FireOnPrepareLevel(index, playMode);
+            FireOnStartLevel();
+        }
+
         public void FireOnDestroyFirstTile()
         {
             OnDestroyFirstTile?.Invoke();
         }
 
+        public void FireOnPauseLevel()
+        {
+            OnPauseLevel?.Invoke();
+        }
+
+        public void FireOnReloadLevel()
+        {
+            OnReloadLevel?.Invoke();
+        }
 
         public LevelData GetLevelData(int indexLevel)
         {

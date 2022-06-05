@@ -7,40 +7,41 @@ namespace PianoTilesEGC.Managers
 {
     public class AudioManager : Singleton<AudioManager>
     {
-		//public AudioSource EffectsSource;
-		public AudioSource MusicSource;
-		
-		public float LowPitchRange = 0.95f;
-		public float HighPitchRange = 1.05f;
+        public AudioSource MusicSource;
 
-		public void SetAudioClip(AudioClip clip)
+        public void SetAudioClip(AudioClip clip)
         {
-			MusicSource.clip = clip;
+            MusicSource.clip = clip;
         }
 
-		public void PlayMusic()
-		{
-			MusicSource.Play();
-		}
-
-        public void StopMusic()
+        public void PlayMusic()
         {
-	        StartCoroutine(StopFadeOut(1f));
+            MusicSource.Play();
         }
-        
+
+        public void StopMusic(float fadeDuration = 0)
+        {
+            StartCoroutine(StopFadeOut(fadeDuration));
+        }
+
+        public void PauseMusic()
+        {
+            MusicSource.Pause();
+        }
+
         private IEnumerator StopFadeOut(float fadeTime)
         {
-	        float startVolume = MusicSource.volume;
- 
-	        while (MusicSource.volume > 0)
-	        {
-		        MusicSource.volume -= startVolume * Time.deltaTime / fadeTime;
- 
-		        yield return null;
-	        }
- 
-	        MusicSource.Stop();
-	        MusicSource.volume = startVolume;
+            float startVolume = MusicSource.volume;
+
+            while (MusicSource.volume > 0)
+            {
+                MusicSource.volume -= startVolume * Time.deltaTime / fadeTime;
+
+                yield return null;
+            }
+
+            MusicSource.Stop();
+            MusicSource.volume = startVolume;
         }
     }
 }

@@ -7,16 +7,38 @@ namespace PianoTilesEGC.Controllers
     public class DeathZoneController : IController<DeathZoneController>
     {
         [SerializeField] private bool AutoDestroy = false;
-        public override void OnDestroyTile() { }
 
-        public override void OnFinishLevel() { }
+        public override void OnDestroyTile()
+        {
+        }
 
-        public override void OnGameOver() { }
+        public override void OnFinishLevel()
+        {
+        }
 
-        public override void OnPrepareLevel(int levelIndex, bool autoMode = false) { }
+        public override void OnGameOver()
+        {
+        }
 
-        public override void OnStartLevel() { }
-        public override void OnDestroyFirstTile() { }
+        public override void OnPrepareLevel(int levelIndex, bool autoMode = false)
+        {
+        }
+
+        public override void OnStartLevel()
+        {
+        }
+
+        public override void OnDestroyFirstTile()
+        {
+        }
+
+        public override void OnPauseLevel()
+        {
+        }
+
+        public override void OnReloadLevel()
+        {
+        }
 
         private void OnTriggerEnter(Collider other)
         {

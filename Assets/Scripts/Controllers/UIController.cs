@@ -19,10 +19,9 @@ namespace PianoTilesEGC.Controllers
         }
 
         public override void OnDestroyTile() { }
-
         public override void OnPrepareLevel(int levelIndex, bool autoMode = false) { }
-        
         public override void OnDestroyFirstTile() { }
-
+        public override void OnPauseLevel() { }
+        public override void OnReloadLevel() { }
     }
 }
